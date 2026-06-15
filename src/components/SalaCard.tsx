@@ -1,21 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { Sala } from '../types/Sala';
 
 type SalaCardProps = {
   sala: Sala;
+  onPress?: () => void;
 };
 
-export default function SalaCard({ sala }: SalaCardProps) {
+export default function SalaCard({ sala, onPress }: SalaCardProps) {
   return (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={onPress}>
       <Text style={styles.titulo}>{sala.nome}</Text>
       <Text style={styles.texto}>Acesso Necessário: Nível {sala.acessoNecessario}</Text>
       <View style={styles.epiContainer}>
         <Text style={styles.epiCom}>Com EPI: {sala.qtdPessoasComEpi}</Text>
         <Text style={styles.epiSem}>Sem EPI: {sala.qtdPessoasSemEpi}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
